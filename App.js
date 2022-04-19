@@ -1,8 +1,5 @@
-import {View, Text, Dimensions} from 'react-native'
+import {View, Text} from 'react-native'
 import React from 'react'
-
-const screenWidth = Math.round(Dimensions.get('window').width)
-const screenHeight = Math.round(Dimensions.get('window').height)
 
 /*
   1. 在rn中容器的默认布局方式是 flex
@@ -12,23 +9,14 @@ const screenHeight = Math.round(Dimensions.get('window').height)
   5. Dimensions 获取屏幕尺寸
 */
 const App = () => (
-  <View
-    style={{
-      backgroundColor: 'aqua',
-      flexDirection: 'row',
-      width: '50%',
-      height: '50%'
-    }}>
-    <Text style={{color: 'red', fontSize: 50}}>Hello, World!</Text>
-    <Text>React Native</Text>
-    <View
+  <View>
+    <Text
       style={{
-        width: screenWidth,
-        height: screenHeight / 2,
-        backgroundColor: 'tan'
+        backgroundColor: 'aqua',
+        transform: [{translateY: 200}, {scale: 2}]
       }}>
-      <Text>屏幕宽度和高度的一半</Text>
-    </View>
+      Hello, World!
+    </Text>
   </View>
 )
 export default App
