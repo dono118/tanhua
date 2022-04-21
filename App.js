@@ -1,13 +1,17 @@
-import {TouchableOpacity, Text} from 'react-native'
+import {View, Image} from 'react-native'
 import React from 'react'
 
-const handlePress = () => {
-  alert('Hi')
-}
-
 const App = () => (
-  <TouchableOpacity onPress={handlePress} activeOpacity={0.5}>
-    <Text>Touch Me</Text>
-  </TouchableOpacity>
+  <View>
+    {/* <Image source={require('./images/1.jpg')} /> */}
+    {/* <Image source={require('./images/1.png')} /> */}
+    <Image source={require('./images/1.gif')} />
+    {/* <Image
+      source={{
+        uri: 'http://img.duoziwang.com/2018/16/04272126721348.jpg'
+      }}
+      style={{width: 200, height: 300}}
+    /> */}
+  </View>
 )
 export default App
