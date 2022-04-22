@@ -1,17 +1,19 @@
-import {View, Image} from 'react-native'
+import { ImageBackground, Text } from 'react-native'
 import React from 'react'
 
 const App = () => (
-  <View>
-    {/* <Image source={require('./images/1.jpg')} /> */}
-    {/* <Image source={require('./images/1.png')} /> */}
-    <Image source={require('./images/1.gif')} />
-    {/* <Image
-      source={{
-        uri: 'http://img.duoziwang.com/2018/16/04272126721348.jpg'
-      }}
-      style={{width: 200, height: 300}}
-    /> */}
-  </View>
+  <ImageBackground
+    source={require('./images/1.jpeg')}
+    style={{ width: '100%', height: '100%' }}>
+    <Text
+      style={{
+        color: 'maroon',
+        fontSize: 22,
+        textAlign: 'center',
+        top: '30%'
+      }}>
+      Variety is the spice of life.
+    </Text>
+  </ImageBackground>
 )
 export default App
