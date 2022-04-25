@@ -1,21 +1,31 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { Text, View } from 'react-native'
+import React, { Component } from 'react'
+class App extends Component {
+  state = {
+    num: 0
+  }
 
-const obj = {
-  name: '张三',
-  age: 25
-}
-const arr = ['apple', 'orange', 'banana']
-const App = () => (
-  <View>
-    <Text>姓名：{obj.name}</Text>
-    <Text>年龄：{obj.age}</Text>
-    {arr.map((v, i) => (
-      <View key={i} style={{ backgroundColor: 'aqua' }}>
-        <Text>{v}</Text>
+  // 组件挂载完毕
+  componentDidMount() {
+    let { num } = this.state
+    this.timeId = setInterval(() => {
+      this.setState({
+        num: num++
+      })
+    }, 60000)
+  }
+  // 组件将要卸载
+  componentWillUnmount() {
+    clearInterval(this.timeId)
+  }
+  render() {
+    const { num } = this.state
+    return (
+      <View>
+        <Text>{num}</Text>
       </View>
-    ))}
-  </View>
-)
+    )
+  }
+}
 
 export default App
