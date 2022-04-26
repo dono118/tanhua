@@ -1,31 +1,25 @@
 import { Text, View } from 'react-native'
-import React, { Component } from 'react'
-class App extends Component {
-  state = {
-    num: 0
-  }
+import React from 'react'
 
-  // 组件挂载完毕
-  componentDidMount() {
-    let { num } = this.state
-    this.timeId = setInterval(() => {
-      this.setState({
-        num: num++
-      })
-    }, 60000)
-  }
-  // 组件将要卸载
-  componentWillUnmount() {
-    clearInterval(this.timeId)
-  }
-  render() {
-    const { num } = this.state
-    return (
+const App = () => (
+  <View>
+    <Text>==========</Text>
+    <Sub color="red">
       <View>
-        <Text>{num}</Text>
+        <Text>++++++++++</Text>
       </View>
-    )
-  }
-}
+    </Sub>
+    <Text>==========</Text>
+  </View>
+)
+
+// 子组件
+const Sub = props => (
+  <View>
+    <Text style={{ color: props.color }}>子组件</Text>
+    {/* 插槽 */}
+    {props.children}
+  </View>
+)
 
 export default App
