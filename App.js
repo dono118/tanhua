@@ -1,6 +1,11 @@
 import { Text, View } from 'react-native'
 import React from 'react'
+import axios from 'axios'
 
+console.log('调试')
+axios
+  .get('http://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata')
+  .then(console.log)
 const App = () => (
   <View>
     <Text>==========</Text>
