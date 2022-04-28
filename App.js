@@ -1,30 +1,49 @@
 import { Text, View } from 'react-native'
-import React from 'react'
-import axios from 'axios'
+import React, { Component } from 'react'
 
-console.log('调试')
-axios
-  .get('http://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata')
-  .then(console.log)
-const App = () => (
-  <View>
-    <Text>==========</Text>
-    <Sub color="red">
+class App extends Component {
+  state = {
+    num: 100
+  }
+
+  // handlePress() {
+  //   console.log(this.state)
+  // }
+
+  // 1 箭头函数
+  handlePress = () => {
+    console.log(this.state)
+  }
+
+  // handlePress1() {
+  //   console.log(this.state)
+  // }
+
+  // handlePress2() {
+  //   console.log(this.state)
+  // }
+
+  // handlePress3() {
+  //   console.log(this.state)
+  // }
+
+  // 4 在构造函数中绑定事件
+  // constructor() {
+  //   super()
+  //   this.handlePress3 = this.handlePress3.bind(this)
+  // }
+
+  render() {
+    return (
       <View>
-        <Text>++++++++++</Text>
+        <Text onPress={this.handlePress}>{this.state.num}</Text>
+        {/* 2 通过bind来绑定 */}
+        {/* <Text onPress={this.handlePress1.bind(this)}>{this.state.num}</Text> */}
+        {/* 3 匿名函数 */}
+        {/* <Text onPress={() => this.handlePress2()}>{this.state.num}</Text> */}
+        {/* <Text onPress={this.handlePress3}>{this.state.num}</Text> */}
       </View>
-    </Sub>
-    <Text>==========</Text>
-  </View>
-)
-
-// 子组件
-const Sub = props => (
-  <View>
-    <Text style={{ color: props.color }}>子组件</Text>
-    {/* 插槽 */}
-    {props.children}
-  </View>
-)
-
+    )
+  }
+}
 export default App
