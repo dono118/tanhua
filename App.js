@@ -1,47 +1,61 @@
 import { Text, View } from 'react-native'
 import React, { Component } from 'react'
 
-class App extends Component {
-  state = {
-    num: 100
+class Btn extends Component {
+  // 子组件挂载完毕
+  componentDidMount() {
+    console.log('子组件挂载完毕')
   }
 
-  // handlePress() {
-  //   console.log(this.state)
-  // }
-
-  // 1 箭头函数
-  handlePress = () => {
-    console.log(this.state)
+  // 子组件即将被卸载
+  componentWillUnmount() {
+    console.log('子组件即将被卸载')
   }
-
-  // handlePress1() {
-  //   console.log(this.state)
-  // }
-
-  // handlePress2() {
-  //   console.log(this.state)
-  // }
-
-  // handlePress3() {
-  //   console.log(this.state)
-  // }
-
-  // 4 在构造函数中绑定事件
-  // constructor() {
-  //   super()
-  //   this.handlePress3 = this.handlePress3.bind(this)
-  // }
 
   render() {
     return (
       <View>
-        <Text onPress={this.handlePress}>{this.state.num}</Text>
-        {/* 2 通过bind来绑定 */}
-        {/* <Text onPress={this.handlePress1.bind(this)}>{this.state.num}</Text> */}
-        {/* 3 匿名函数 */}
-        {/* <Text onPress={() => this.handlePress2()}>{this.state.num}</Text> */}
-        {/* <Text onPress={this.handlePress3}>{this.state.num}</Text> */}
+        <Text>按钮</Text>
+      </View>
+    )
+  }
+}
+
+class App extends Component {
+  // 构造函数
+  constructor() {
+    super()
+    console.log('1 构造函数 constructor')
+    // 对state做初始化
+    this.state = {
+      num: 100,
+      isShow: true
+    }
+  }
+
+  // 组件挂载完毕
+  componentDidMount() {
+    console.log('3 组件挂载完毕')
+  }
+
+  handlePress = () => {
+    this.setState({
+      num: Date.now()
+    })
+  }
+
+  handleToggle = () => {
+    this.setState({ isShow: !this.state.isShow })
+  }
+
+  render() {
+    const { num, isShow } = this.state
+    console.log('2 render函数 视图更新')
+    return (
+      <View>
+        <Text onPress={this.handlePress}>{num}</Text>
+        <Text onPress={this.handleToggle}>切换显示</Text>
+        {isShow ? <Btn /> : <></>}
       </View>
     )
   }
