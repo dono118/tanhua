@@ -1,6 +1,9 @@
-import { observable, action } from 'mobx'
+import { makeObservable, observable, action } from 'mobx'
 
 class RootStore {
+  constructor() {
+    makeObservable(this)
+  }
   // @observable es7的装饰器语法 表示数据可监控 表示是全局数据
   @observable
   name = '悟空'
